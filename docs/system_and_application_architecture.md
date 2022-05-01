@@ -9,14 +9,14 @@ A client is a process requesting that service from a server, the client sends th
 
 We use 3-tiered client-server architecture which means the application is spread across three machines, one client, and two servers. One of the servers may need input from the other server to process the client request, acting as a client.
 
-![alt text](diagram/system_architecture_diagram1.png "system architecture first diagram")
+![alt text](diagrams/system_architecture_diagram1.png "system architecture first diagram")
   
 <p align="center">Figure 1.1</p>
 
 Some of the advantages of three-tier architecture include scalability, improved security, reusability, improved availability, and data integrity.
 
 
-![alt text](diagram/system_architecture_diagram2.png "system architecture second diagram")
+![alt text](diagrams/system_architecture_diagram2.png "system architecture second diagram")
 <p align="center">Figure 1.2</p>
 
 
@@ -41,11 +41,9 @@ Additionally, as shown in fig 2.1 :
   
   To make our web application more simple, scalable, effective, safe, and reliable we could also integrate **REST** architecture. To implement Rest architecture we will use the Restful API.
 <<<<<<< Updated upstream
-  
-  
-![alt text](Image%20directory/application_architecture_diagram.png "application architecture diagram")
+
 =======
-  ![alt text](diagram/application_architecture_diagram.png "application architecture diagram")
+  ![alt text](diagrams/application_architecture_diagram.png "application architecture diagram")
 >>>>>>> Stashed changes
 <p align="center">Figure 2.1</p>
 
