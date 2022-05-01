@@ -9,14 +9,14 @@ A client is a process requesting that service from a server, the client sends th
 
 We use 3-tiered client-server architecture which means the application is spread across three machines, one client, and two servers. One of the servers may need input from the other server to process the client request, acting as a client.
 
-![alt text](/Image%20directory/system_architecture_diagram1.png "system architecture first diagram")
+![alt text](Image%20directory/system_architecture_diagram1.png "system architecture first diagram")
   
 <p align="center">Figure 1.1</p>
 
 Some of the advantages of three-tier architecture include scalability, improved security, reusability, improved availability, and data integrity.
 
 
-![alt text](/Image%20directory/system_architecture_diagram2.png "system architecture second diagram")
+![alt text](Image%20directory/system_architecture_diagram2.png "system architecture second diagram")
 <p align="center">Figure 1.2</p>
 
 
@@ -40,7 +40,7 @@ Additionally, as shown in fig 2.1 :
   
   
   To make our web application more simple, scalable, effective, safe, and reliable we could also integrate **REST** architecture. To implement Rest architecture we will use the Restful API.
-  ![alt text](/Image%20directory/application_architecture_diagram.png "application architecture diagram")
+  ![alt text](Image%20directory/application_architecture_diagram.png "application architecture diagram")
 <p align="center">Figure 2.1</p>
 
 **In A Nutshell**, when a client sends a request to Laravel Restful API through HTTP, the webserver first receives the request and passes it through to PHP Engine,  then the actual execution starts from Laravel initialization routines.  The Laravel initialize routines finish some configuration,  the request is then passed  To the middleware engine for filtering, after filtering there comes the core routing component responsible for request dispatching according to the route configuration table, finally the MVC controller takes over the dispatched request. In general, the controller is responsible for application logic execution and inquiring about the model for data fetch and persistent, the view React components take over the last piece of work for rendering the page, at the end of the process only JSON data is exchanged and will be returned. Laravel provides a  powerful ORM framework for relational database manipulation, the model depends heavily rely on ORM for data processing as shown in figure 2.1 
