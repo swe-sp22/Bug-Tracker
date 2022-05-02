@@ -29,43 +29,43 @@ Each iteration is divided into three phases, let’s add some detailed sub-phase
 
 Design 0
 
-- Write user and system requirements
+- Write user and system requirements ✅
 
-- Design the system architecture
+- Design the system architecture ✅
 
-- Design Application Architecture
+- Design Application Architecture ✅
 
-- Plan project phases
+- Plan project phases ✅
 
 Implement 0
 
 - Setting up environment
-
-- Install necessary tools
+ 
+- Install necessary tools 
 
 Analysis 0
 
-- Review each other documents
+- Review each other documents ✅
 
-- Approve above documents
+- Approve above documents ✅
 
 #### Phase 1  29/4/2022 ~ 03/5/2022
 
 Design 1
 
-- System Modeling
+- System Modeling ✅
 
-- UML Diagrams
+- UML Diagrams ✅
 
-- Use Case Diagrams
+- Use Case Diagrams ✅
 
-- Activity diagram
+- Activity diagram ✅
 
-- State Machine diagram
+- State Machine diagram ✅
 
-- Interaction diagrams
+- Interaction diagrams ✅
 
-- Detailed Class diagram
+- Detailed Class diagram ✅
 
 Implement 1
 
@@ -79,7 +79,7 @@ Implement 1
 
 Analysis 1
 
-- Review each other designs
+- Review each other designs ✅
 
 - Review Class diagram after creating the database
 
