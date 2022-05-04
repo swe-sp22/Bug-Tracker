@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "631aad55-5ada-420c-8477-8c8418ed0880",
+		"name": "Bug-Tracking-App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Ahmed\",\r\n    \"email\":\"ahmed@gmail.com\",\r\n    \"role_id\":\"1\",\r\n    \"password\":\"123456789\",\r\n    \"password_confirmed\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/api/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"ahmed@gmail.com\",\r\n    \"password\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/api/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTg2Mzc1NTY2Yzk2N2JlOGE5MWIwMDZiZDk5ZjUxZGY2NGUxNzIwZDQ0MTAzMzgxOTg1NzRkYjZkNmU3YzBkYzdmY2NhMGZjOTI3NjJiMDciLCJpYXQiOjE2NTE2NzM5MjUsIm5iZiI6MTY1MTY3MzkyNSwiZXhwIjoxNjgzMjA5OTI1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.QFrrGG1imIl6tnrpbO2oyaRkF51AYaTazEDzI_LgmvrOmZGdAmwLGkRBqTjgMosBXbEUn1IRZlTNka_xvb-izLDDB8i6-anqnWvP5u9OwitqSGqLo7y4qqFWPpnEriGl6swGELeep5ejj0F8mwRFCS3OaK9r0iK788GVxiSKSDysPFL6veI_bTVVVjp41C6-KMLNcRAznRVrmY66UKtMh0dGG1QSSPq5ynTQvMXeDqAYC9R_TPO_6SMgSLbFIU4Y3sVZIiWbN92KFGpOlYKojxxeK02nLXlYBAPVpdW8Axef6A1qGirzPp2wCBXhofRbSw0NRhfLMkRlVB4bLquMEz7rZbgW-FECP19REAFOcuMrcjz4rtWblXHciKs1hgqQKviXx97M5cUnTRFxE6MfnNaf0Z671CPYByrC1jxLq0-N02GebtImMAt3liwkkTgMgoZHinkQCfzudPzXh2nB5EhzxZoPZFjXmO-SBc6LaMNHEGe6VNbZSwk1E207gsaV6XVr1hjVnpb1p6H9esy_PWQ8rN3GVHfNjVaaA68pMKbywVOb1whk90fLk6ppTRmyxxq7Ene3nkY3IMUuLp21tKJMwQ0gnj8YsvLNUNinp9Lqp3646uvsuAFphNC97a0sERqx2teGc-isKgMNLhv0vXHvc_WaHpcxzo9t3FyQYw4"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://127.0.0.1:8000/api/logout"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
