@@ -39,7 +39,7 @@ Design 0
 
 Implement 0
 
-- Setting up environment
+- Setting up environment 
  
 - Install necessary tools 
 
@@ -69,7 +69,7 @@ Design 1
 
 Implement 1
 
-- Implement the database schema based on the designed class diagram in phase 1
+- Implement the database schema based on the designed class diagram in phase 1 ✅
 
 - Create models relationships
 
@@ -93,7 +93,7 @@ Design 2
 
 Implement 2 (**Issues details are added upon reaching this phase**)
 
-- \[Backend] User roles and Authentication
+- \[Backend] User roles and Authentication ✅
 
 - \[Frontend] Registration and Login Pages with backend integration
 
