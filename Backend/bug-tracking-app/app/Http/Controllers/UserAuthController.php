@@ -33,7 +33,6 @@ class UserAuthController extends Controller
             'email'=>$request->email,
             'role_id'=>$request->role_id,
             'password'=>bcrypt($request->password),
-            'password_confirmed'=>$request->password_confirmed
         ]);
         return response($user);
     }
