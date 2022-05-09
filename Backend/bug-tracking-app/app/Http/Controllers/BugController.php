@@ -116,7 +116,11 @@ class BugController extends Controller
     public function destroy($id)
     {
         $bug = Bug::find($id);
-        if(!$bug)   return response()->json('You can not delete a bug, but you can close it!', 403);
+        if(!$bug)   return response()->json('Bug not found', 403);
+
+        $curr_user = Auth::user();
+        if($curr_user->role_id != 1)    return response()->json(["message" => "You can not delete a bug, but you can close it"],401);
+
         $bug->delete();
         return response()->json('Bug successfully deleted', 202);   
     }
