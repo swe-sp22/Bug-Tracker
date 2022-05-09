@@ -20,15 +20,7 @@ class ProjectController extends Controller
         return response()->json($all_projects, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -73,18 +65,8 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::find($id);
+        if(!$project)   return response()->json("Project not found", 404);
         return response()->json($project, 200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

@@ -14,18 +14,31 @@ class ProjectTest extends TestCase
 
     /** @test */
     public function get_all_projects(){
-        $project = factory('App\Project')->create();
-        $response = $this->get('api/projects');
-        $response->assertSee($project->title)
-                ->assertSee($project->description);
+        parent::setUp();
+        \Artisan::call('passport:install');
+        
+        factory('App\Role')->create();
+        $user = factory('App\User')->create();
+        $token =  $user->createToken('authToken')->accessToken;
+
+        $this->withHeaders([
+            'Authorization' => 'Bearer '. $token,
+         ])->getJson('api/projects')->assertStatus(200);
     }
 
     /** @test */
     public function show_single_project(){
         $project = factory('App\Project')->create();
-        $response = $this->get('api/projects/'.$project->id);
-        $response->assertSee($project->title)
-                ->assertSee($project->description);
+        parent::setUp();
+        \Artisan::call('passport:install');
+        
+        factory('App\Role')->create();
+        $user = factory('App\User')->create();
+        $token =  $user->createToken('authToken')->accessToken;
+
+        $this->withHeaders([
+            'Authorization' => 'Bearer '. $token,
+         ])->getJson("api/projects/{$project->id}")->assertStatus(200);
     }
 
     /** @test */
