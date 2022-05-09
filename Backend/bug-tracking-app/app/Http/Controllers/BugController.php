@@ -80,7 +80,7 @@ class BugController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'title' => ['max:255', 'unique:bugs'],
+            'title' => ['max:255'],
             'description' => ['max:255'],
             'status' => ['in:OPEN,NEW,ASSIGNED,FIXED,DUPLICATE,REJECTED,PENDING,RETEST,VERIFIED,CLOSED']
         ]);
