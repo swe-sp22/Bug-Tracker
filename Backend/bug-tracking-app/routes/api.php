@@ -18,6 +18,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('register', 'UserAuthController@register');
     Route::get('logout', 'UserAuthController@logout');
     
+    Route::resource('projects', 'ProjectController');
+    Route::resource('bugs', 'BugController');
 });
 
 
