@@ -30,4 +30,4 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: Backend/bug-tracking-app/database/database.sqlite
-      run: Backend/bug-tracking-app/vendor/bin/phpunit
+      run: Backend/bug-tracking-app/vendor/bin/phpunit Backend/bug-tracking-app/tests --verbose
