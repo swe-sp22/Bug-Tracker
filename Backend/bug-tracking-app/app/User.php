@@ -42,4 +42,14 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo(Role::class);
     }
+
+    public function projects(){
+        return $this->hasMany(Project::class);
+    }
+    public function reportedBugs(){
+        return $this->hasMany(Bug::class);
+    }
+    public function assignedBugs(){
+        return $this->hasMany(Bug::class);
+    }
 }
