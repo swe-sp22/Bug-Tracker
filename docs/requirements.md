@@ -4,7 +4,7 @@
 
 1. An administrator can add a project.  ✅
 2. An administrator can add another administrator to the system.  ✅
-3. A customer/staff member/administrator can open a bug to an existing project. ⏳
+3. A customer/staff member/administrator can open a bug to an existing project. ✅
 4. An administrator can add a staff member. ✅
 5. An administrator can add/remove a staff member from an existing project. ⏳
 6. An administrator can assign a staff member to a bug.
@@ -63,7 +63,7 @@
 
 10.2. Bug information includes the assigned staff member (if any), the status of the bug, and, if closed as duplicate, the link to the existing duplicate bug.
 
-11.1. A staff member or administrator can close a bug.
+11.1. A staff member or administrator can close a bug.  ⏳
 
 11.2. If the bug is a duplicate of another reported bug, the existing bug must be linked. The status of the bug must change to “duplicate”.
 
@@ -77,6 +77,6 @@
 
 12.2. A newly created account is a “customer” unless promoted by an administrator.
 
-12.3. The customer must specify username, password, and email when creating a new account.
+12.3. The customer must specify username, password, and email when creating a new account.  ✅
 
-12.4. Users can login with their username and password.
+12.4. Users can login with their username and password. ✅
