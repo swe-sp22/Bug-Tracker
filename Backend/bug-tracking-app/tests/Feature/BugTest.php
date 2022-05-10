@@ -29,7 +29,6 @@ class BugTest extends TestCase
 
     /** @test */
     public function user_get_single_bug(){
-        $bug = factory('App\Bug')->create();
         parent::setUp();
         \Artisan::call('passport:install');
         
@@ -37,6 +36,8 @@ class BugTest extends TestCase
         $user = factory('App\User')->create();
         $token =  $user->createToken('authToken')->accessToken;
 
+        $bug = factory('App\Bug')->create();
+        
         $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
          ])->getJson("api/bugs/{$bug->id}")->assertStatus(200);
