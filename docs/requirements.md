@@ -31,13 +31,13 @@
 
 3.1. New bugs can be opened from any account.
 
-3.2. A title for the bug must be entered.
+3.2. A title for the bug must be entered. ✅
 
-3.3. An optional description for the bug can be entered.
+3.3. An optional description for the bug can be entered.  ✅
 
-3.4. An existing project must be chosen for the new bug.
+3.4. An existing project must be chosen for the new bug.  ✅
 
-3.5. The bug status must be “new” when it’s opened.
+3.5. The bug status must be “new” when it’s opened. ✅
 
 4.1. Staff members can be added to the system by an existing administrator.
 
@@ -59,7 +59,7 @@
 
 9.1. A staff member can view all bugs assigned to them from all projects or filter them to a specific project.
 
-10.1. Any user can view all bugs of any project.
+10.1. Any user can view all bugs of any project.  ✅
 
 10.2. Bug information includes the assigned staff member (if any), the status of the bug, and, if closed as duplicate, the link to the existing duplicate bug.
 
