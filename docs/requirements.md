@@ -63,7 +63,7 @@
 
 10.2. Bug information includes the assigned staff member (if any), the status of the bug, and, if closed as duplicate, the link to the existing duplicate bug.
 
-11.1. A staff member or administrator can close a bug.  ⏳
+11.1. A staff member or administrator can close a bug.  ✅
 
 11.2. If the bug is a duplicate of another reported bug, the existing bug must be linked. The status of the bug must change to “duplicate”.
 
