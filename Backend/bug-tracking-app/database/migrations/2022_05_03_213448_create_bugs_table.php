@@ -21,6 +21,9 @@ class CreateBugsTable extends Migration
             $table->string('photo')->nullable();
             $table->string('type')->nullable();
             $table->string('status');
+            $table->string('comment')->nullable();
+            $table->unsignedBigInteger('project_id')->nullable();
+            $table->foreign('project_id')->references('id')->on('projects');
             $table->unsignedBigInteger('solution_id')->nullable();
             $table->foreign('solution_id')->references('id')->on('solutions');
         });

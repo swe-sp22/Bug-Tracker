@@ -13,7 +13,7 @@ class BugTest extends TestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function get_all_bugs(){
+    public function user_get_all_bugs_of_project(){
         parent::setUp();
         \Artisan::call('passport:install');
         
@@ -21,9 +21,14 @@ class BugTest extends TestCase
         $user = factory('App\User')->create();
         $token =  $user->createToken('authToken')->accessToken;
 
+        
+        $project = factory('App\Project')->create();
+        $bug = factory('App\Bug')->create();
         $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
-         ])->getJson('api/bugs')->assertStatus(200);
+         ])->getJson("/api/bugs/project/{$project->id}?=NEW")
+         ->assertStatus(200)
+         ->assertJsonCount(12);
        
     }
 
@@ -51,12 +56,23 @@ class BugTest extends TestCase
         factory('App\Role')->create();
         $user = factory('App\User')->create();
         $token =  $user->createToken('authToken')->accessToken;
+
+        $project = factory('App\Project')->create();
+
         $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
          ])->postJson('/api/bugs', [
-            'title'=>'test bug', 
-            'description'=>'bug desc'])
-            ->assertStatus(201);
+            'title'=>'test bug create', 
+            'description'=>'bug desc','project_id'=>$project->id])
+            ->assertStatus(201)
+            ->assertJsonFragment([
+            "title"=> "test bug create",
+            "description"=> "bug desc",
+            "photo"=> null,
+            "type"=> null,
+            "status"=> "NEW",
+            "project_id"=> $project->id,
+            "id"=> 1]);
     }
 
     /** @test */
@@ -91,6 +107,24 @@ class BugTest extends TestCase
             ->delete('/api/bugs/'.$bug->id)
             ->assertStatus(202);
 
+}
+
+/** @test */
+public function change_bug_status(){
+    parent::setUp();
+    \Artisan::call('passport:install');
+    
+    factory('App\Role')->create();
+    $user = factory('App\User')->create();
+    $token =  $user->createToken('authToken')->accessToken;
+
+    $bug = factory('App\Bug')->create();
+
+    $this->withHeaders([
+                'Authorization' => 'Bearer '. $token,
+                ])->putJson("api/bugs/status/{$bug->id}", ['status'=>'OPEN', 'comment'=>'opening a bug'])
+        ->assertStatus(200)
+        ->assertJsonFragment(['status'=>'OPEN', 'comment'=>'opening a bug']);
 }
     
 }

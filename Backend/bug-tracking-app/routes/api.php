@@ -19,7 +19,9 @@ Route::middleware('auth:api')->group(function () {
     Route::get('logout', 'UserAuthController@logout');
     
     Route::resource('projects', 'ProjectController');
-    Route::resource('bugs', 'BugController');
+    Route::resource('bugs', 'BugController')->except(['index','changeStatus']);
+    Route::get('bugs/project/{project_id}/{status?}', 'BugController@index');
+    Route::put('bugs/status/{id}', 'BugController@changeStatus');
 });
 
 

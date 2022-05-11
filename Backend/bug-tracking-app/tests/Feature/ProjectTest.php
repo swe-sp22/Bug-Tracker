@@ -28,10 +28,9 @@ class ProjectTest extends TestCase
 
     /** @test */
     public function show_single_project(){
-        $project = factory('App\Project')->create();
         parent::setUp();
         \Artisan::call('passport:install');
-        
+        $project = factory('App\Project')->create();
         factory('App\Role')->create();
         $user = factory('App\User')->create();
         $token =  $user->createToken('authToken')->accessToken;
