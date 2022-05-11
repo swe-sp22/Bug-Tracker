@@ -4,12 +4,12 @@
 
 1. An administrator can add a project.  ✅
 2. An administrator can add another administrator to the system.  ✅
-3. A customer/staff member/administrator can open a bug to an existing project. ⏳
+3. A customer/staff member/administrator can open a bug to an existing project. ✅
 4. An administrator can add a staff member. ✅
 5. An administrator can add/remove a staff member from an existing project. ⏳
 6. An administrator can assign a staff member to a bug.
 7. An administrator can view bugs assigned to a specific staff member.
-8. An administrator can view unassigned bugs.
+8. An administrator can view unassigned bugs. ✅
 9. A staff member can view bugs assigned to him.
 10. A customer/staff member/administrator can view bugs (including their status) of a given project.  ⏳
 11. A staff member/administrator can close a bug as a duplicate, not reproducible, already fixed, or not a bug.
@@ -29,15 +29,15 @@
 
 2.3. Existing administrators can promote the account to an administrator.
 
-3.1. New bugs can be opened from any account.
+3.1. New bugs can be opened from any account. ✅
 
-3.2. A title for the bug must be entered.
+3.2. A title for the bug must be entered. ✅
 
-3.3. An optional description for the bug can be entered.
+3.3. An optional description for the bug can be entered.  ✅
 
-3.4. An existing project must be chosen for the new bug.
+3.4. An existing project must be chosen for the new bug.  ✅
 
-3.5. The bug status must be “new” when it’s opened.
+3.5. The bug status must be “new” when it’s opened. ✅
 
 4.1. Staff members can be added to the system by an existing administrator.
 
@@ -59,11 +59,11 @@
 
 9.1. A staff member can view all bugs assigned to them from all projects or filter them to a specific project.
 
-10.1. Any user can view all bugs of any project.
+10.1. Any user can view all bugs of any project.  ✅
 
 10.2. Bug information includes the assigned staff member (if any), the status of the bug, and, if closed as duplicate, the link to the existing duplicate bug.
 
-11.1. A staff member or administrator can close a bug.
+11.1. A staff member or administrator can close a bug.  ✅
 
 11.2. If the bug is a duplicate of another reported bug, the existing bug must be linked. The status of the bug must change to “duplicate”.
 
@@ -77,6 +77,6 @@
 
 12.2. A newly created account is a “customer” unless promoted by an administrator.
 
-12.3. The customer must specify username, password, and email when creating a new account.
+12.3. The customer must specify username, password, and email when creating a new account.  ✅
 
-12.4. Users can login with their username and password.
+12.4. Users can login with their username and password. ✅
