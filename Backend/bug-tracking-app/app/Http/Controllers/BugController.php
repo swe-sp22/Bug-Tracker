@@ -11,7 +11,7 @@ use App\Project;
 class BugController extends Controller
 {
     /**
-     * Display a listing of the resource.ii
+     * Display a listing of the resource
      *
      * @return \Illuminate\Http\Response
      */
