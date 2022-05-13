@@ -20,8 +20,6 @@ class ProjectController extends Controller
         return response()->json($all_projects, 200);
     }
 
-   
-
     /**
      * Store a newly created resource in storage.
      *
@@ -31,7 +29,9 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $curr_user = Auth::user();
-        if($curr_user->role_id != 1)    return response(["message" => "Unauthorized, You must be an admin"]);
+        if ($curr_user->role_id != 1) {
+            return response(["message" => "Unauthorized, You must be an admin"]);
+        }
 
         // Validation
         $validator = Validator::make($request->all(), [
@@ -65,7 +65,9 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::find($id);
-        if(!$project)   return response()->json("Project not found", 404);
+        if (! $project) {
+            return response()->json("Project not found", 404);
+        }
         return response()->json($project, 200);
     }
 
@@ -79,7 +81,9 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $curr_user = Auth::user();
-        if($curr_user->role_id != 1)    return response(["message" => "Unauthorized, You must be an admin"]);
+        if ($curr_user->role_id != 1) {
+            return response(["message" => "Unauthorized, You must be an admin"]);
+        }
 
         // Validation
         $validator = Validator::make($request->all(), [
@@ -101,7 +105,7 @@ class ProjectController extends Controller
         $project->description = $request->description;
         $project->save();
 
-        return response()->json($project,200);
+        return response()->json($project, 200);
     }
 
     /**
@@ -113,11 +117,15 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $curr_user = Auth::user();
-        if($curr_user->role_id != 1)    return response(["message" => "Unauthorized, You must be an admin"]);
+        if ($curr_user->role_id != 1) {
+            return response(["message" => "Unauthorized, You must be an admin"]);
+        }
 
         $project = Project::find($id);
-        if(!$project)   return response()->json("Project not found",204);
+        if (! $project) {
+            return response()->json("Project not found", 204);
+        }
         $project->delete();
-        return response()->json("Project deleted",202);
+        return response()->json("Project deleted", 202);
     }
 }

@@ -9,11 +9,14 @@ use App\User;
 
 class UserAuthController extends Controller
 {
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         // Authorization
         $curr_user = Auth::user();
-        if($curr_user->role_id != 1)    return response(["message" => "Unauthorized, You must be an admin"]);
-        
+        if ($curr_user->role_id != 1) {
+            return response(["message" => "Unauthorized, You must be an admin"]);
+        }
+
         // Validation
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'max:255'],
@@ -42,8 +45,9 @@ class UserAuthController extends Controller
         return response($user);
     }
 
-    public function login(Request $request){
-        if(!Auth::attempt($request->only('email', 'password'))){
+    public function login(Request $request)
+    {
+        if (! Auth::attempt($request->only('email', 'password'))) {
             return response([
                 'errors' => 'Invalid credentials'
             ], 403);
@@ -56,7 +60,8 @@ class UserAuthController extends Controller
         ]);
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         auth('api')->user()->token()->revoke();
         return response([
             'message' => 'Logged out successfully'

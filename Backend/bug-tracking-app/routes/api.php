@@ -24,5 +24,4 @@ Route::middleware('auth:api')->group(function () {
     Route::put('bugs/status/{id}', 'BugController@changeStatus');
 });
 
-
 Route::post('login', 'UserAuthController@login');
