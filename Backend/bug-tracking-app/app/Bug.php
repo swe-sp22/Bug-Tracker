@@ -8,14 +8,18 @@ class Bug extends Model
 {
     protected $fillable = ['title', 'description', 'photo', 'type', 'project_id'];
     
-    public function project(){
+    public function project()
+    {
         return $this->belongsTo(Project::class);
     }
-    
-    public function reporter(){
+
+    public function reporter()
+    {
         return $this->hasMany(User::class);
     }
-    public function assignees(){
+
+    public function assignees()
+    {
         return $this->belongsTo(User::class);
     }
 }

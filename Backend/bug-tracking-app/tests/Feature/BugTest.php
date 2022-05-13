@@ -13,7 +13,8 @@ class BugTest extends TestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function user_get_all_bugs_of_project(){
+    public function user_get_all_bugs_of_project()
+    {
         parent::setUp();
         \Artisan::call('passport:install');
         
@@ -26,14 +27,15 @@ class BugTest extends TestCase
         $bug = factory('App\Bug')->create();
         $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
-         ])->getJson("/api/bugs/project/{$project->id}?=NEW")
-         ->assertStatus(200)
-         ->assertJsonCount(12);
+        ])->getJson("/api/bugs/project/{$project->id}?=NEW")
+            ->assertStatus(200)
+            ->assertJsonCount(12);
        
     }
 
     /** @test */
-    public function user_get_single_bug(){
+    public function user_get_single_bug()
+    {
         parent::setUp();
         \Artisan::call('passport:install');
         
@@ -45,11 +47,12 @@ class BugTest extends TestCase
         
         $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
-         ])->getJson("api/bugs/{$bug->id}")->assertStatus(200);
+        ])->getJson("api/bugs/{$bug->id}")->assertStatus(200);
     }
 
     /** @test */
-    public function user_can_create_bug(){
+    public function user_can_create_bug()
+    {
         parent::setUp();
         \Artisan::call('passport:install');
         
@@ -61,22 +64,25 @@ class BugTest extends TestCase
 
         $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
-         ])->postJson('/api/bugs', [
+        ])->postJson('/api/bugs', [
             'title'=>'test bug create', 
-            'description'=>'bug desc','project_id'=>$project->id])
+            'description'=>'bug desc','project_id'=>$project->id
+        ])
             ->assertStatus(201)
             ->assertJsonFragment([
-            "title"=> "test bug create",
-            "description"=> "bug desc",
-            "photo"=> null,
-            "type"=> null,
-            "status"=> "NEW",
-            "project_id"=> $project->id,
-            "id"=> 1]);
+                "title"=> "test bug create",
+                "description"=> "bug desc",
+                "photo"=> NULL,
+                "type"=> NULL,
+                "status"=> "NEW",
+                "project_id"=> $project->id,
+                "id"=> 1
+            ]);
     }
 
     /** @test */
-    public function user_can_update_bug(){
+    public function user_can_update_bug()
+    {
         parent::setUp();
         \Artisan::call('passport:install');
         
@@ -85,14 +91,15 @@ class BugTest extends TestCase
         $token =  $user->createToken('authToken')->accessToken;
         $bug = factory('App\Bug')->create();
         $this->withHeaders([
-                    'Authorization' => 'Bearer '. $token,
-                 ])->putJson("api/bugs/{$bug->id}", ['title'=>'updated title', 'description'=>'uodated desc', 'status'=>'OPEN'])
+            'Authorization' => 'Bearer '. $token,
+        ])->putJson("api/bugs/{$bug->id}", ['title'=>'updated title', 'description'=>'uodated desc', 'status'=>'OPEN'])
             ->assertStatus(200)
             ->assertJsonFragment(['title'=>'updated title', 'description'=>'uodated desc', 'status'=>'OPEN']);
     }
 
     /** @test */
-    public function user_can_delete_bug(){
+    public function user_can_delete_bug()
+    {
 
         parent::setUp();
         \Artisan::call('passport:install');
@@ -103,28 +110,28 @@ class BugTest extends TestCase
 
         $bug = factory('App\Bug')->create();
         $this->withHeaders([
-        'Authorization' => 'Bearer '. $token,])
+            'Authorization' => 'Bearer '. $token,
+        ])
             ->delete('/api/bugs/'.$bug->id)
             ->assertStatus(202);
+    }
 
-}
+    /** @test */
+    public function change_bug_status()
+    {
+        parent::setUp();
+        \Artisan::call('passport:install');
+        
+        factory('App\Role')->create();
+        $user = factory('App\User')->create();
+        $token =  $user->createToken('authToken')->accessToken;
 
-/** @test */
-public function change_bug_status(){
-    parent::setUp();
-    \Artisan::call('passport:install');
-    
-    factory('App\Role')->create();
-    $user = factory('App\User')->create();
-    $token =  $user->createToken('authToken')->accessToken;
+        $bug = factory('App\Bug')->create();
 
-    $bug = factory('App\Bug')->create();
-
-    $this->withHeaders([
-                'Authorization' => 'Bearer '. $token,
-                ])->putJson("api/bugs/status/{$bug->id}", ['status'=>'OPEN', 'comment'=>'opening a bug'])
-        ->assertStatus(200)
-        ->assertJsonFragment(['status'=>'OPEN', 'comment'=>'opening a bug']);
-}
-    
+        $this->withHeaders([
+            'Authorization' => 'Bearer '. $token,
+        ])->putJson("api/bugs/status/{$bug->id}", ['status'=>'OPEN', 'comment'=>'opening a bug'])
+            ->assertStatus(200)
+            ->assertJsonFragment(['status'=>'OPEN', 'comment'=>'opening a bug']);
+    }    
 }
