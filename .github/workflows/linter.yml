@@ -1,0 +1,20 @@
+name: "Linter"
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install PHP_CodeSniffer
+        run: |
+          curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+          php phpcs.phar --version
+
+      - name: Run PHP_CodeSniffer
+        run: |
+          php phpcs.phar --report=checkstyle --standard=phpcs.xml .
