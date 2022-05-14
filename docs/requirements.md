@@ -47,11 +47,11 @@
 
 5.1. An administrator can view a staff member profile page, then add/remove them as a staff member to/from a project.
 
-6.1. For an unassigned bug, an administrator can assign a staff member.
+6.1. For an unassigned bug, an administrator can assign a staff member. ✅
 
 6.2. The assigned staff member must belong to the project where the bug was opened. ⏳
 
-6.3. The issue status must change automatically to “assigned”.
+6.3. The issue status must change automatically to “assigned”.  ✅
 
 7.1. From the staff member profile page, administrators can view the bugs assigned to the staff member. ⏳
 
