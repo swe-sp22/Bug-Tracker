@@ -56,6 +56,7 @@ class User extends Authenticatable
 
     public function assignedBugs()
     {
+        // Assigned Bugs for a staff-member
         return $this->hasMany(Bug::class);
     }
 }
