@@ -7,7 +7,7 @@
 3. A customer/staff member/administrator can open a bug to an existing project. ✅
 4. An administrator can add a staff member. ✅
 5. An administrator can add/remove a staff member from an existing project. ⏳
-6. An administrator can assign a staff member to a bug.
+6. An administrator can assign a staff member to a bug. ✅
 7. An administrator can view bugs assigned to a specific staff member.  ⏳
 8. An administrator can view unassigned bugs. ✅
 9. A staff member can view bugs assigned to him.  ⏳
