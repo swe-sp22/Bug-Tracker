@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Bug;
 use App\Project;
+use App\User;
 
 class BugController extends Controller
 {
@@ -25,7 +26,6 @@ class BugController extends Controller
                 ->where('status', request()->status)
                 ->paginate(15);
         }
-
         return response()->json($all_bugs, 200);
     }
 
@@ -81,7 +81,8 @@ class BugController extends Controller
         if (! $bug) {
             return response()->json("Bug not found", 404);
         }
-
+        $assignee = User::find($bug->assignee_id);
+        $bug['assigned_staff_member'] = $assignee;
         return response()->json($bug, 200);
     }
 
@@ -110,7 +111,7 @@ class BugController extends Controller
             );
         }
 
-        $bug = Bug::find($id);
+        $bug = Bug::findOrFail($id);
         if ($request->title) {
             $bug->title = $request->title;
         }
@@ -184,5 +185,60 @@ class BugController extends Controller
         $bug->save();
 
         return response()->json($bug, 200);
+    }
+
+    public function assignMemberToBug(Request $request, $bug_id, $assignee_id)
+    {
+        $curr_user = Auth::user();
+        if($curr_user->role_id != 1)
+        {
+            return response()->json("Only admins can assign staff members to bugs", 403);
+        }
+        $bug = Bug::findOrFail($bug_id);
+        $assignee = User::findOrFail($assignee_id);
+
+        if($assignee && $assignee->role_id==2)
+        {
+            $bug->assignee_id = $assignee->id;
+            $bug->status = 'ASSIGNED';
+            $bug->save();
+            return response()->json([
+                "msg"=>"Staff member has been successfully assigned to the bug",
+                "bug" => $bug],200);
+        }
+        else
+        {
+            return response()->json("Assignee must be a staff member!", 403);
+        }
+    }
+
+
+    public function viewMemberBugs($staff_member_id)
+    {
+        // An administrator can view bugs assigned to a specific staff member
+        $curr_user = Auth::user();
+        if($curr_user->role_id != 1)
+        {
+            return response()->json("Only admins can view staff members bugs", 403);
+        }
+        $staff_member = User::findOrFail($staff_member_id);
+        if($staff_member->role_id !=2)
+        {
+            return response()->json("You must provide a staff member id!", 403);
+        }
+
+        $bugs = Bug::where('assignee_id', $staff_member->id)->get();
+        return response()->json($bugs, 200);
+    }
+
+    public function memberViewhisBugs()
+    {
+        $curr_user = Auth::user();
+        if($curr_user->role_id==2)
+        {
+            $bugs = Bug::where('assignee_id',$curr_user->id)->get();
+            return response()->json($bugs, 200);
+        }
+        return response()->json('Unauthorized, you must be a staff member', 403);
     }
 }
