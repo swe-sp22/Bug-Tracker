@@ -133,5 +133,71 @@ class BugTest extends TestCase
         ])->putJson("api/bugs/status/{$bug->id}", ['status'=>'OPEN', 'comment'=>'opening a bug'])
             ->assertStatus(200)
             ->assertJsonFragment(['status'=>'OPEN', 'comment'=>'opening a bug']);
-    }    
+    }   
+    
+    /** @test */
+    public function assign_member_to_Bug()
+    {
+        parent::setUp();
+        \Artisan::call('passport:install');
+        
+        factory('App\Role')->create();
+        $staff_role = factory('App\Role')->create();
+
+        $user = factory('App\User')->create();
+        $token =  $user->createToken('authToken')->accessToken;
+
+        $staff_member = factory('App\User')->create();
+        $staff_member->role_id = $staff_role->id;
+        $staff_member->save();
+        $bug = factory('App\Bug')->create();
+
+        $this->withHeaders([
+            'Authorization' => 'Bearer '. $token,
+        ])->postJson("api/bugs/{$bug->id}/assign/{$staff_member->id}")
+            ->assertStatus(200);
+    }
+    
+    /** @test */
+    public function admin_view_member_bugs()
+    {
+          parent::setUp();
+        \Artisan::call('passport:install');
+        
+        factory('App\Role')->create();
+        factory('App\Role')->create();
+
+        $user = factory('App\User')->create();
+        $token =  $user->createToken('authToken')->accessToken;
+
+        $staff_member = factory('App\User')->create();
+        $staff_member->role_id = 2;
+        $staff_member->save();
+
+        $this->withHeaders([
+            'Authorization' => 'Bearer '. $token,
+        ])->getJson("api/member/{$staff_member->id}/bugs")
+            ->assertStatus(200);
+    }
+
+    /** @test */
+    public function staff_member_view_his_bugs()
+    {
+        parent::setUp();
+        \Artisan::call('passport:install');
+        
+        factory('App\Role')->create();
+        factory('App\Role')->create();
+
+        $staff_member = factory('App\User')->create();
+        $staff_member->role_id = 2;
+        $staff_member->save();
+        $token =  $staff_member->createToken('authToken')->accessToken;
+
+
+        $this->withHeaders([
+            'Authorization' => 'Bearer '. $token,
+        ])->getJson("api/member/bugs")
+            ->assertStatus(200);
+    }
 }
