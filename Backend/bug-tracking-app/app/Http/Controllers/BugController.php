@@ -196,13 +196,14 @@ class BugController extends Controller
         $bug = Bug::findOrFail($bug_id);
         $assignee = User::findOrFail($assignee_id);
 
-        if ($assignee && $assignee->role_id==2) {
+        if ($assignee && $assignee->role_id == 2) {
             $bug->assignee_id = $assignee->id;
             $bug->status = 'ASSIGNED';
             $bug->save();
             return response()->json([
                 "msg"=>"Staff member has been successfully assigned to the bug",
-                "bug" => $bug],200);
+                "bug" => $bug
+            ], 200);
         } else {
             return response()->json("Assignee must be a staff member!", 403);
         }
@@ -229,7 +230,7 @@ class BugController extends Controller
     {
         $curr_user = Auth::user();
         if ($curr_user->role_id == 2) {
-            $bugs = Bug::where('assignee_id',$curr_user->id)->get();
+            $bugs = Bug::where('assignee_id', $curr_user->id)->get();
             return response()->json($bugs, 200);
         }
         return response()->json('Unauthorized, you must be a staff member', 403);
