@@ -62,5 +62,6 @@
     <exclude name="Generic.Arrays.ArrayIndent.CloseBraceIncorrect" />
     <exclude name="Generic.Files.LineLength.TooLong" />
     <exclude name="Generic.PHP.LowerCaseConstant.Found" />
+    <exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClassBeforeLastUsed" />
   </rule>
 </ruleset>
