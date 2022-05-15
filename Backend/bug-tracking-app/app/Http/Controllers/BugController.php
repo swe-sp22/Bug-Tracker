@@ -190,24 +190,20 @@ class BugController extends Controller
     public function assignMemberToBug(Request $request, $bug_id, $assignee_id)
     {
         $curr_user = Auth::user();
-        if($curr_user->role_id != 1)
-        {
+        if ($curr_user->role_id != 1) {
             return response()->json("Only admins can assign staff members to bugs", 403);
         }
         $bug = Bug::findOrFail($bug_id);
         $assignee = User::findOrFail($assignee_id);
 
-        if($assignee && $assignee->role_id==2)
-        {
+        if ($assignee && $assignee->role_id==2) {
             $bug->assignee_id = $assignee->id;
             $bug->status = 'ASSIGNED';
             $bug->save();
             return response()->json([
                 "msg"=>"Staff member has been successfully assigned to the bug",
                 "bug" => $bug],200);
-        }
-        else
-        {
+        } else {
             return response()->json("Assignee must be a staff member!", 403);
         }
     }
@@ -217,13 +213,11 @@ class BugController extends Controller
     {
         // An administrator can view bugs assigned to a specific staff member
         $curr_user = Auth::user();
-        if($curr_user->role_id != 1)
-        {
+        if ($curr_user->role_id != 1) {
             return response()->json("Only admins can view staff members bugs", 403);
         }
         $staff_member = User::findOrFail($staff_member_id);
-        if($staff_member->role_id !=2)
-        {
+        if ($staff_member->role_id !=2) {
             return response()->json("You must provide a staff member id!", 403);
         }
 
@@ -234,8 +228,7 @@ class BugController extends Controller
     public function memberViewhisBugs()
     {
         $curr_user = Auth::user();
-        if($curr_user->role_id==2)
-        {
+        if ($curr_user->role_id == 2) {
             $bugs = Bug::where('assignee_id',$curr_user->id)->get();
             return response()->json($bugs, 200);
         }
