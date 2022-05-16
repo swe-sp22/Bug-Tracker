@@ -22,6 +22,10 @@ Route::middleware('auth:api')->group(function () {
     Route::resource('bugs', 'BugController')->except(['index','changeStatus']);
     Route::get('bugs/project/{project_id}/{status?}', 'BugController@index');
     Route::put('bugs/status/{id}', 'BugController@changeStatus');
+    Route::post('bugs/{bug_id}/assign/{assignee_id}', 'BugController@assignMemberToBug');
+    Route::get('member/{member_id}/bugs', 'BugController@viewMemberBugs');
+    Route::get('member/bugs', 'BugController@memberViewhisBugs');
+
 });
 
 Route::post('login', 'UserAuthController@login');

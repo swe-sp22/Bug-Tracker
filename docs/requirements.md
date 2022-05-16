@@ -7,10 +7,10 @@
 3. A customer/staff member/administrator can open a bug to an existing project. ✅
 4. An administrator can add a staff member. ✅
 5. An administrator can add/remove a staff member from an existing project. ⏳
-6. An administrator can assign a staff member to a bug.
-7. An administrator can view bugs assigned to a specific staff member.
+6. An administrator can assign a staff member to a bug. ✅
+7. An administrator can view bugs assigned to a specific staff member.  ✅
 8. An administrator can view unassigned bugs. ✅
-9. A staff member can view bugs assigned to him.
+9. A staff member can view bugs assigned to him.  ✅
 10. A customer/staff member/administrator can view bugs (including their status) of a given project.  ⏳
 11. A staff member/administrator can close a bug as a duplicate, not reproducible, already fixed, or not a bug.
 12. Customers, staff members, and administrators have a username and password that they use to login to the system. ✅
@@ -47,13 +47,13 @@
 
 5.1. An administrator can view a staff member profile page, then add/remove them as a staff member to/from a project.
 
-6.1. For an unassigned bug, an administrator can assign a staff member.
+6.1. For an unassigned bug, an administrator can assign a staff member. ✅
 
-6.2. The assigned staff member must belong to the project where the bug was opened.
+6.2. The assigned staff member must belong to the project where the bug was opened. ⏳
 
-6.3. The issue status must change automatically to “assigned”.
+6.3. The issue status must change automatically to “assigned”.  ✅
 
-7.1. From the staff member profile page, administrators can view the bugs assigned to the staff member.
+7.1. From the staff member profile page, administrators can view the bugs assigned to the staff member. ⏳
 
 8.1. The administrator can view all unassigned bugs from all projects, or filter them to a specific project.
 

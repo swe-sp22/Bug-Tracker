@@ -203,29 +203,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/bugs/project/1?status=OPEN",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"bugs",
-								"project",
-								"1"
-							],
-							"query": [
-								{
-									"key": "status",
-									"value": "OPEN"
-								}
-							]
-						}
+						"url": "http://127.0.0.1:8000/api/bugs/project/1"
 					},
 					"response": []
 				},
@@ -344,6 +322,88 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "StaffMembers and Bugs",
+			"item": [
+				{
+					"name": "Assign staff member to a bug",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://127.0.0.1:8000/api/bugs/{bug_id}/assign/{staff_member_id}"
+					},
+					"response": []
+				},
+				{
+					"name": "An administrator can view bugs assigned to a specific staff member",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://127.0.0.1:8000/api/member/{staff_member_id}/bugs"
+					},
+					"response": []
+				},
+				{
+					"name": "A staff member can view bugs assigned to him",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZjA3MWIzM2I3MTg2ZGJiYjMzOThhY2Y0OGNkNjg1NTZiYTQyYjgxZjk2ODdhY2E5NGZkMWE4MTdjNTVhZWY1MGI2MDAyNjUwMTk2YjcwYTUiLCJpYXQiOjE2NTI0OTIzOTAsIm5iZiI6MTY1MjQ5MjM5MCwiZXhwIjoxNjg0MDI4MzkwLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.FH25WiVE66MjLlNcrsGfjBFjlMqsE0WrXumXTsWGjAeHTxX1BjdVhV_pCQG1ZpGUA_lRkb4pslqex31CgCPo_dQRqOAJTM0aZV4OacXrXAZB3EhgbIl6tJgHWbhccTEbexumLnvJYBI3Bysz-anv2xUoe_TDrsARgirLCEvUTN4K_V7LC2PaqQnCaSnVQRzHCuU4v1EUIY1Pb6aRmccV0QFKNauaO7Zp3ARJ46yMjs-k2vf2X9u1dcA2BpeiiNEw4RjYzqaQk8sEJUkyloE1qWMyrQobQYPSOui10GlgGgXlZW-4uVaNfkRfNBumob6q3DimxcB1VyjOZe3ALcB1mycKWJVDuMhjTvjGRv3JokKnyMih7WenJC96x_25fhJD1gRPuG5oSFDvd6_nP64irO1ADvtdcB3BvaxjyZIOjFE3BqNeADS6fstFgxRZDViLu6qCl_yG2gcwnN15zgnrMWbZj5-VBtKe_CQnKJj_iB-AHMJGaRjGWm7TpI6wFHRWhAo7UeJZs8psRuUQcsB-MPKOFLxUBLrsJ1ns4W-4jEnsND8zruBGRuG_dBqbTIVYTACL8wqi8INc2FBG1udEc3mZycquMKbGlSEhDFNcItsNoEFwuRmvHqixh08DpMy_CZIwUnK2AQNqNFUts3zu_cgFpALsjG53kHuzoWxemY0"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://127.0.0.1:8000/api/member/bugs"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNWZjZGEzNDY2ZjQxZTMxODcyNjFkMjRmMjhiYzdjMGI4MmRlM2I3NWJiOTVhZDgxMTA3ZGFmYmQzN2Q4NzRlMmNhMTc3YzQ3YjlkMGE5MTEiLCJpYXQiOjE2NTI0OTEyMzksIm5iZiI6MTY1MjQ5MTIzOSwiZXhwIjoxNjg0MDI3MjM5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.LvU9vSgERXpZksz_oZsBW_CQEhblpX0zNHMtMOnmR17sMf-RsIDwq5guKc5IN3055lNDGPn5uZOaN7JTUmVOKqtQhpbpDSQENyplvkpGnM9JCdOePmee1QR85XY5-SS2mB33qTT60AmZT4zcy1t-g6EHSOncH0kinWcov07AjQpyjstvtZyGp_Ft4LtONPIuEGSesAyxTziT2Fm3qonIs72nMogk_BdtOWLhGBOsIh16vxtIn0AFOrsFcjET_cJyvRPTqjyCaS06vJ9lRx6lsxJfgQ4AOn1lus00slxc6hHacgfnhi368jVRli2Xzxs5l6iB610LrC9ZStBIyTkIkK0Q9oz12i-j5ALQFlJd3TbdsMQzt1lAY21jpIzRZDE5tyn48AN4RXOk1XbKRaw2TM2iJH2xj8PupsHg_rHH8kWgnoq4Ge4VK6HOMEsazDHzg6kWE6p8_FDU_9f9Hj7I5FUXrsZBJUqRcntjGYn0Fl1HvLGaTpyfsAAwoNr552Yo-aw9YzoQE_QQinWnT4ztYQOeqFKsK2asvnaXU-O6sIdGqXqjjYA3d9lejifxme5Y-gIpmmtdYKR7uDAzzveuBgEDcuLP5RDDLbRzfTZv5kvqJVzKHYN5ZKls9GVQub2BhLVOQ5u5QwDM_zbmlJZvUaHyzvZXSGBkEPixEWwRdOI"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
