@@ -196,7 +196,7 @@ class BugController extends Controller
         $bug = Bug::findOrFail($bug_id);
         $assignee = User::findOrFail($assignee_id);
 
-        if ($assignee && $assignee->role_id == 2) {
+        if ($assignee->role_id == 2) {
             $bug->assignee_id = $assignee->id;
             $bug->status = 'ASSIGNED';
             $bug->save();
