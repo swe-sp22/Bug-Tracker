@@ -18,8 +18,9 @@ class Bug extends Model
         return $this->hasMany(User::class);
     }
 
-    public function assignees()
+    public function assignee()
     {
+        // Belongs to one staff-member
         return $this->belongsTo(User::class);
     }
 }
