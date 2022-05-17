@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Project;
+use App\Bug;
 
 class ProjectController extends Controller
 {
@@ -121,10 +122,8 @@ class ProjectController extends Controller
             return response(["message" => "Unauthorized, You must be an admin"]);
         }
 
-        $project = Project::find($id);
-        if (! $project) {
-            return response()->json("Project not found", 204);
-        }
+        $project = Project::findOrFail($id);
+        Bug::where('project_id', $id)->delete();
         $project->delete();
         return response()->json("Project deleted", 202);
     }
