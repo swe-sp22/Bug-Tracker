@@ -56,6 +56,7 @@ class UserAuthController extends Controller
         $user = Auth::user();
         $token = $user->createToken('token')->accessToken;
         return response([
+            'role_id' => $user->role_id,
             'jwt'=>$token
         ]);
     }
