@@ -6,7 +6,7 @@
 
   <exclude-pattern>*/vendor/*</exclude-pattern>
   <exclude-pattern>*/3rdparty/*</exclude-pattern>
-  <exclude-pattern>*/FrontEnd/*</exclude-pattern>
+  <exclude-pattern>*/*.js</exclude-pattern>
   <exclude-pattern>*/server.php</exclude-pattern>
   <exclude-pattern>*/*.blade.php</exclude-pattern>
   <exclude-pattern>*/tests/CreatesApplication.php</exclude-pattern>

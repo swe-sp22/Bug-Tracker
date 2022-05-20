@@ -76,6 +76,6 @@ class UserAuthController extends Controller
 
     public function getStaffMembers()
     {
-        return response(User::where('role_id',2)->get());
+        return response(User::where('role_id', 2)->get());
     }
 }
