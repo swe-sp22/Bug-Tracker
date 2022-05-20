@@ -17,17 +17,17 @@
 
 ## System requirements
 
-1.1. An administrator can create/read/update/delete projects.
+1.1. An administrator can create/read/update/delete projects. 
 
-1.2. An administrator will enter the project name and description.
+1.2. An administrator will enter the project name and description.  ✅
 
-1.3. A project name must be unique.
+1.3. A project name must be unique. ✅
 
-2.1. New administrators can be added to the system by an existing administrator.
+2.1. New administrators can be added to the system by an existing administrator.  ✅
 
-2.2. The new administrator will create a regular customer account.
+2.2. The new administrator will create a regular customer account.  ✅
 
-2.3. Existing administrators can promote the account to an administrator.
+2.3. Existing administrators can promote the account to an administrator. 
 
 3.1. New bugs can be opened from any account. ✅
 
@@ -39,13 +39,13 @@
 
 3.5. The bug status must be “new” when it’s opened. ✅
 
-4.1. Staff members can be added to the system by an existing administrator.
+4.1. Staff members can be added to the system by an existing administrator. ✅
 
-4.2. The new staff member will create a regular customer account.
+4.2. The new staff member will create a regular customer account. ✅
 
 4.3. Existing administrators can promote the account to a staff member.
 
-5.1. An administrator can view a staff member profile page, then add/remove them as a staff member to/from a project.
+5.1. An administrator can view a staff member profile page, then add/remove them as a staff member to/from a project. ✅
 
 6.1. For an unassigned bug, an administrator can assign a staff member. ✅
 
@@ -61,7 +61,7 @@
 
 10.1. Any user can view all bugs of any project.  ✅
 
-10.2. Bug information includes the assigned staff member (if any), the status of the bug, and, if closed as duplicate, the link to the existing duplicate bug.
+10.2. Bug information includes the assigned staff member (if any), the status of the bug, and, if closed as duplicate, the link to the existing duplicate bug. ✅
 
 11.1. A staff member or administrator can close a bug.  ✅
 
