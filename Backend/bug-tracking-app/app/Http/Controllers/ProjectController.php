@@ -17,7 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $all_projects = Project::paginate(15);
+        $all_projects = Project::with('bugs')->paginate(15);
         return response()->json($all_projects, 200);
     }
 
@@ -126,5 +126,10 @@ class ProjectController extends Controller
         Bug::where('project_id', $id)->delete();
         $project->delete();
         return response()->json("Project deleted", 202);
+    }
+
+    public function projectCount()
+    {
+        return response([Project::all()->count()]);
     }
 }

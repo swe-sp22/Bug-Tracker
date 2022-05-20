@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->group(function () {
     Route::post('register', 'UserAuthController@register');
     Route::get('logout', 'UserAuthController@logout');
+    Route::get('users/{id}', 'UserAuthController@getUser');
+    Route::get('staff', 'UserAuthController@getStaffMembers');
     
+    Route::get('project/count', 'ProjectController@projectCount');
     Route::resource('projects', 'ProjectController');
     Route::resource('bugs', 'BugController')->except(['index','changeStatus']);
     Route::get('bugs/project/{project_id}/{status?}', 'BugController@index');
@@ -25,6 +28,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('bugs/{bug_id}/assign/{assignee_id}', 'BugController@assignMemberToBug');
     Route::get('member/{member_id}/bugs', 'BugController@viewMemberBugs');
     Route::get('member/bugs', 'BugController@memberViewhisBugs');
+    Route::get('bug/count', 'BugController@bugCount');
 
 });
 

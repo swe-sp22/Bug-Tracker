@@ -235,4 +235,9 @@ class BugController extends Controller
         }
         return response()->json('Unauthorized, you must be a staff member', 403);
     }
+
+    public function bugCount()
+    {
+        return response([Bug::all()->count()]);
+    }
 }

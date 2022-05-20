@@ -68,4 +68,14 @@ class UserAuthController extends Controller
             'message' => 'Logged out successfully'
         ]);
     }
+
+    public function getUser($id)
+    {
+        return response([ "data" => User::findOrFail($id)]);
+    }
+
+    public function getStaffMembers()
+    {
+        return response(User::where('role_id',2)->get());
+    }
 }

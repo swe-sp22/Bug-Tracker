@@ -18,7 +18,7 @@ class CreateBugsTable extends Migration
             $table->timestamps();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('photo')->nullable();
+            $table->string('photo')->nullable()->default('https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png');
             $table->string('type')->nullable();
             $table->string('status');
             $table->string('comment')->nullable();
