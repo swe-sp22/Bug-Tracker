@@ -26,6 +26,7 @@ class CreateBugsTable extends Migration
             $table->foreign('project_id')->references('id')->on('projects');
             $table->unsignedBigInteger('solution_id')->nullable();
             $table->foreign('solution_id')->references('id')->on('solutions');
+            // TODO (IMPORTANT): Do we need a new migration that adds a FK to user (reporter_id)
         });
     }
 

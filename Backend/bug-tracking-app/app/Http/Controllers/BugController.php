@@ -63,7 +63,6 @@ class BugController extends Controller
         $bug->type = $request->type;
         $bug->status = 'NEW';
         $bug->project_id = $project->id;
-        $bug->comment = $request->comment;
         $bug->save();
         
         return response()->json($bug, 201);
@@ -112,6 +111,12 @@ class BugController extends Controller
         }
 
         $bug = Bug::findOrFail($id);
+
+        $curr_user = Auth::user();
+        if ($curr_user->role_id != 1 /* && bug reporter isn't the current user*/) {
+            return response()->json("Only admins or bug reporters can update bugs", 403);
+        }
+
         if ($request->title) {
             $bug->title = $request->title;
         }
@@ -120,6 +125,7 @@ class BugController extends Controller
             $bug->description = $request->description;
         }
 
+        // Allow admins only? Or make some specific statuses for admin only? Or not modify status here at all given there is another API?
         if ($request->status) {
             $bug->status = $request->status;
         }
@@ -157,7 +163,7 @@ class BugController extends Controller
     {
         // Authorization
         $curr_user = Auth::user();
-        if ($curr_user->role_id ==3) {
+        if ($curr_user->role_id == 3) {
             return response(["message" => "Unauthorized, You must be an admin or staff member", 401]);
         }
        
@@ -196,17 +202,17 @@ class BugController extends Controller
         $bug = Bug::findOrFail($bug_id);
         $assignee = User::findOrFail($assignee_id);
 
-        if ($assignee->role_id == 2) {
-            $bug->assignee_id = $assignee->id;
-            $bug->status = 'ASSIGNED';
-            $bug->save();
-            return response()->json([
-                "msg"=>"Staff member has been successfully assigned to the bug",
-                "bug" => $bug
-            ], 200);
-        } else {
+        if ($assignee->role_id != 2) {
             return response()->json("Assignee must be a staff member!", 403);
         }
+
+        $bug->assignee_id = $assignee->id;
+        $bug->status = 'ASSIGNED';
+        $bug->save();
+        return response()->json([
+            "msg"=>"Staff member has been successfully assigned to the bug",
+            "bug" => $bug
+        ], 200);
     }
 
 
@@ -226,7 +232,7 @@ class BugController extends Controller
         return response()->json($bugs, 200);
     }
 
-    public function memberViewhisBugs()
+    public function memberViewHisBugs()
     {
         $curr_user = Auth::user();
         if ($curr_user->role_id == 2) {

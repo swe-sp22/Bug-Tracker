@@ -15,7 +15,7 @@ class Bug extends Model
 
     public function reporter()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function assignee()
