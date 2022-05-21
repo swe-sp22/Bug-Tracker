@@ -39,9 +39,9 @@ Design 0
 
 Implement 0
 
-- Setting up environment 
+- Setting up environment  ✅
  
-- Install necessary tools 
+- Install necessary tools  ✅
 
 Analysis 0
 
@@ -71,109 +71,109 @@ Implement 1
 
 - Implement the database schema based on the designed class diagram in phase 1 ✅
 
-- Create models relationships
+- Create models relationships ✅
 
-- Setup the react project wireframes
+- Setup the react project wireframes ✅
 
-- Create generic react components if present i.e (for CRUD operations)
+- Create generic react components if present i.e (for CRUD operations) ✅
 
 Analysis 1
 
 - Review each other designs ✅
 
-- Review Class diagram after creating the database
+- Review Class diagram after creating the database ✅
 
 #### Phase 2 3/5/2022 ~ 8/5/2022
 
 Design 2
+ 
+- Modifications upon evolving new details in requirements ✅
 
-- Modifications upon evolving new details in requirements
-
-- Choose a primary design scheme for the UI i.e (color palette, button styles, ..etc)
+- Choose a primary design scheme for the UI i.e (color palette, button styles, ..etc) ✅
 
 Implement 2 (**Issues details are added upon reaching this phase**)
 
 - \[Backend] User roles and Authentication ✅
 
-- \[Frontend] Registration and Login Pages with backend integration
+- \[Frontend] Registration and Login Pages with backend integration  ✅
 
-- \[Testing] Authentication
+- \[Testing] Authentication ✅
 
-- \[Backend] CRUD Staff members
+- \[Backend] CRUD Staff members ✅
 
-- \[Frontend] CRUD Staff members with backend integration
+- \[Frontend] CRUD Staff members with backend integration ✅
 
-- \[Testing] CRUD staff members
+- \[Testing] CRUD staff members ✅
 
-- \[Backend] CRUD Projects
+- \[Backend] CRUD Projects ✅
 
-- \[Frontend] CRUD Projects with backend integration
+- \[Frontend] CRUD Projects with backend integration ✅
 
-- \[Testing] CRUD Projects
+- \[Testing] CRUD Projects ✅
 
 Analysis 2
 
-- Review each other code
+- Review each other code ✅
 
-- Testing all implemented features in this phase
+- Testing all implemented features in this phase ✅
 
-- Requirements Verification and validation
+- Requirements Verification and validation ✅
 
 #### Phase 3 8/5/2022 ~ 13/5/2022
 
 Design 3
 
-- Modifications upon evolving new details in requirements
+- Modifications upon evolving new details in requirements ✅
 
 Implement 3
 
-- \[Backend] CRUD Bugs
+- \[Backend] CRUD Bugs ✅
 
-- \[Frontend] CRUD Bugs with backend integration
+- \[Frontend] CRUD Bugs with backend integration ✅
     
-- \[Testing] CRUD Bugs
+- \[Testing] CRUD Bugs ✅
 
 Analysis
 
-- Review All integrated code
+- Review All integrated code ✅
 
-- Extract new functions needed to be implemented in both backend and frontend.
+- Extract new functions needed to be implemented in both backend and frontend. ✅
 
 #### Phase 4 13/5/2022 ~ 18/5/2022
 
 Design 4
 
-- Modifications upon evolving new details in requirements
+- Modifications upon evolving new details in requirements ✅
 
-- Refine the class diagram
+- Refine the class diagram ✅
 
-- Refine application components architecture
+- Refine application components architecture ✅
 
 Implement 4
 
-- \[Testing] Test evolved remaining functions
+- \[Testing] Test evolved remaining functions ✅
 
-- \[Backend] Implement the remaining functions reviewed from phase 3
+- \[Backend] Implement the remaining functions reviewed from phase 3 ✅
 
-- \[Frontend] Integrate all remaining functions with backend
+- \[Frontend] Integrate all remaining functions with backend✅
 
 Analysis 4
 
-- Review Code
+- Review Code ✅
 
-- Review Class diagram
+- Review Class diagram ✅
 
 #### Phase 5 18/5/2022 ~ 20/5/2022
 
 Implement 5
 
-- \[Testing] Release testing (Test the whole integrated system)
+- \[Testing] Release testing (Test the whole integrated system) ✅
 
-- Fix all bugs
+- Fix all bugs ✅
   
 
 #### Submission Phase 20/5/2022 ~ 22/5/2022
 
-- Prepare a presentation video to show work and discuss analysis and design
+- Prepare a presentation video to show work and discuss analysis and design 
 
-- Final report
+- Final report 
