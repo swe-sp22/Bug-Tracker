@@ -20,8 +20,12 @@ const Modal = (props) => {
 
     fetch(url+'bugs/'+props.bug_id,requestOptions)
     .then(response => response.text())
-    .then(result => {console.log(result);location.reload();})
+    .then(result => alert(result))
     .catch(error => console.log('error', error));
+      setTimeout(() => {
+        setVisible(!visible);
+        location.reload();
+      }, 2000);
     setVisible(!visible);
 
   }
