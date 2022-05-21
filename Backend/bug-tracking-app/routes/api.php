@@ -21,7 +21,6 @@ Route::middleware('auth:api')->group(function () {
     Route::get('staff', 'UserAuthController@getStaffMembers');
 
     Route::get('project/count', 'ProjectController@projectCount');
-
     Route::resource('projects', 'ProjectController');
     Route::resource('bugs', 'BugController')->except(['index','changeStatus']);
     Route::get('bugs/project/{project_id}/{status?}', 'BugController@index');
