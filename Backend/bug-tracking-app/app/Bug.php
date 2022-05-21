@@ -13,11 +13,6 @@ class Bug extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function reporter()
-    {
-        return $this->hasMany(User::class);
-    }
-
     public function assignee()
     {
         // Belongs to one staff-member

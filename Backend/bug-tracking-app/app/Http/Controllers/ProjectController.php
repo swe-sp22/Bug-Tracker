@@ -102,6 +102,10 @@ class ProjectController extends Controller
         }
 
         $project = Project::find($id);
+        if (! $project) {
+            return response()->json("Project not found", 404);
+        }
+
         $project->title = $request->title;
         $project->description = $request->description;
         $project->save();

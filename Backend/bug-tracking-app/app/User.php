@@ -44,16 +44,6 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function projects()
-    {
-        return $this->hasMany(Project::class);
-    }
-
-    public function reportedBugs()
-    {
-        return $this->hasMany(Bug::class);
-    }
-
     public function assignedBugs()
     {
         // Assigned Bugs for a staff-member
