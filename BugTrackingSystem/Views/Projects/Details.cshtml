@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<Customer> UserManager
+@model BugTrackingSystem.Models.Project
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
+<div>
+    <h4>@Html.DisplayFor(model => model.Description)</h4>
+    <hr />
+
+	<a asp-action="ReportBug" asp-route-id="@Model!.Id" class="btn btn-outline-primary">Report bug</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model!.Bugs ?? Array.Empty<Bug>())
+            {
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    @if (await UserManager.GetUserAsync(User) is Administrator)
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> @:|
+    }
+    <a asp-action="Index">Back to List</a>
+</div>

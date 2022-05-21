@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<Customer> UserManager
+@model BugTrackingSystem.Models.Customer
+
+@{
+	ViewData["Title"] = "Profile";
+}
+
+@{
+	var user = await UserManager.GetUserAsync(User);
+	var isAdmin = user is Administrator;
+}
+
+<h1 id="UserName">@Html.DisplayFor(model => model.UserName)</h1>
+
+<div>
+	@if (Model is Administrator)
+	{
+		<h4>Role: Admin</h4>
+		<hr />
+	}
+	else if (Model is StaffMember)
+	{
+		<h4>Role: Staff member</h4>
+		<hr />
+		@if (isAdmin)
+		{
+			<button type="button" class="btn btn-outline-primary" onclick="makeAdmin()">Make admin</button>	
+		}
+	}
+	else
+	{
+		<h4>Role: Customer</h4>
+		<hr />
+		@if (isAdmin)
+		{
+			<button type="button" class="btn btn-outline-primary" onclick="makeStaffMember()">Make staff member</button>
+			<button type="button" class="btn btn-outline-primary" onclick="makeAdmin()">Make admin</button>
+		}
+	}
+
+</div>
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/js/profiles.js" asp-append-version="true"></script>
+}

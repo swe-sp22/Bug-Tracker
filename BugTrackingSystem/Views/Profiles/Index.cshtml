@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BugTrackingSystem.Models.Customer>
+
+@{
+	ViewData["Title"] = "Users";
+}
+
+<h1>Users</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.UserName)
+			</th>
+			<th>
+				Role
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model!)
+		{
+			<tr>
+				<td>
+					<a asp-action="Details" asp-route-id="@item.UserName">@Html.DisplayFor(modelItem => item.UserName)</a>
+				</td>
+				<td>
+					@if (item is Administrator)
+					{
+						@:Administrator
+					}
+					else if (item is StaffMember)
+					{
+						@:Staff member
+					}
+					else
+					{
+						@:Customer
+					}
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
