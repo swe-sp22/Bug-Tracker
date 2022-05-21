@@ -31,8 +31,11 @@ const ReportBugModal = (props) => {
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-    setVisible(!visible);
-    location.reload();
+    setTimeout(() => {
+      setVisible(!visible);
+      location.reload();
+    }, 2000);
+    
   };
 
   return (
