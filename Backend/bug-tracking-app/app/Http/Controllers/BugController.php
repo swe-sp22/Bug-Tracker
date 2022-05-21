@@ -113,7 +113,7 @@ class BugController extends Controller
         $bug = Bug::findOrFail($id);
 
         $curr_user = Auth::user();
-        if ($curr_user->role_id != 1 /* && bug reporter isn't the current user*/) {
+        if ($curr_user->role_id != 1) {
             return response()->json("Only admins or bug reporters can update bugs", 403);
         }
 
