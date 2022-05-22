@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { CModalFooter, CModalHeader, CModalTitle, CButton, CModal, CModalBody, CForm,CFormLabel, CFormInput,CFormTextarea } from '@coreui/react'
-const AddProjectModal = (props) => {
+const UpdateProjectModal = (props) => {
   const [visible, setVisible] = useState(false);
-  const [title,setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title,setTitle] = useState(props.project_title);
+  const [description, setDescription] = useState(props.project_description);
 
-  const url = 'http://127.0.0.1:8000/api/projects';
+  const url = 'http://127.0.0.1:8000/api/projects/';
   const token = localStorage.getItem('token');
   var row = JSON.stringify({
     "title": title ,
@@ -19,20 +19,20 @@ const AddProjectModal = (props) => {
     myHeaders.append("Content-Type", "application/json");
 
     var requestOptions = {
-      method: 'POST',
+      method: 'PUT',
       headers: myHeaders,
       body: row,
       redirect: 'follow'
     };
 
-    fetch(url,requestOptions)
+    fetch(url+props.project_id,requestOptions)
     .then(response => {
-      response.text();
-      if(response.status == 201) {
-      swal("Good job!", "Bug Project created Succesfully", "success").then(function() {location.reload();setVisible(!visible);});
+      console.log(response.text());
+      if(response.status == 200) {
+      swal("Good job!", "Bug Project updated Succesfully", "success").then(function() {location.reload();setVisible(!visible);});
       }
       else {
-        swal(`Error ${response.status}`, "Project can't be created", "error");
+        swal(`Error ${response.status}`, "Project can't be updated", "error");
       }
     })
     .catch(error => console.log('error', error));
@@ -40,7 +40,7 @@ const AddProjectModal = (props) => {
 
   return (
     <>
-      <CButton color={props.color} onClick={() => setVisible(!visible)}>{props.title}</CButton>
+      <CButton size='sm' color={props.color} onClick={() => setVisible(!visible)}>{props.title}</CButton>
       <CModal scrollable visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Report bug for project {props.project_id}</CModalTitle>
@@ -67,4 +67,4 @@ const AddProjectModal = (props) => {
     </>
   )
 }
-export default AddProjectModal
+export default UpdateProjectModal

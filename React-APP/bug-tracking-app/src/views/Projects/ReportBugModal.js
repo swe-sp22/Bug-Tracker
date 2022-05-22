@@ -28,21 +28,25 @@ const ReportBugModal = (props) => {
     };
 
     fetch(url,requestOptions)
-    .then(response => response.text())
-    .then(result =>{ console.log(result);
-      swal("Good job!", "Bug created successfully!", "success");
+    .then(response => {
+      response.text();
+      if (response.status != 201) {
+        swal(`Error ${response.status}`, "Bug can't be reported", "error");
+      }
+      else {
+        swal("Good job!", "Bug created successfully!", "success").then(function() {location.reload();});
+      }
     })
     .catch(error => console.log('error', error));
     setTimeout(() => {
       setVisible(!visible);
-      location.reload();
     }, 2000);
     
   };
 
   return (
     <>
-      <CButton color={props.color} onClick={() => setVisible(!visible)}>Report bug</CButton>
+      <CButton size='sm' color={props.color} onClick={() => setVisible(!visible)}>Report bug</CButton>
       <CModal scrollable visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Report bug for project {props.project_id}</CModalTitle>
