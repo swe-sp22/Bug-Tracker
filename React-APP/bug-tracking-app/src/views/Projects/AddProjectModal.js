@@ -27,7 +27,7 @@ const AddProjectModal = (props) => {
 
     fetch(url,requestOptions)
     .then(response => response.text())
-    .then(result => {console.log(result);location.reload();})
+    .then(result => {swal("Good job!", "Bug Project created Succesfully", "success");console.log(result);location.reload();})
     .catch(error => console.log('error', error));
     setVisible(!visible);
     
@@ -44,11 +44,11 @@ const AddProjectModal = (props) => {
         <CForm>
             <div className="mb-3">
                 <CFormLabel htmlFor="exampleFormControlInput1">Title</CFormLabel>
-                <CFormInput   value={title} onChange={(e) => {setTitle(e.target.value);}} type="text" id="exampleFormControlInput1" placeholder="Project title"/>
+                <CFormInput   value={title} onChange={(e) => {setTitle(e.target.value);}} type="text" id="exampleFormControlInput1" placeholder="Project title" required />
             </div>
             <div className="mb-3">
                 <CFormLabel htmlFor="exampleFormControlTextarea1">Description</CFormLabel>
-                <CFormTextarea value={description} onChange={(e) => {setDescription(e.target.value);}}  id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
+                <CFormTextarea value={description} onChange={(e) => {setDescription(e.target.value);}}  id="exampleFormControlTextarea1" rows="3" required></CFormTextarea>
             </div>
         </CForm>
         </CModalBody>

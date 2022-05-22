@@ -29,7 +29,9 @@ const ReportBugModal = (props) => {
 
     fetch(url,requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result))
+    .then(result =>{ console.log(result);
+      swal("Good job!", "Bug created successfully!", "success");
+    })
     .catch(error => console.log('error', error));
     setTimeout(() => {
       setVisible(!visible);

@@ -17,10 +17,11 @@ const Modal = (props) => {
       headers: myHeaders,
       redirect: 'follow'
     };
+    
 
     fetch(url+'bugs/'+props.bug_id,requestOptions)
     .then(response => response.text())
-    .then(result => alert(result))
+    .then(result => swal("Good job!", "Bug as been Deleted!", "success"))
     .catch(error => console.log('error', error));
       setTimeout(() => {
         setVisible(!visible);

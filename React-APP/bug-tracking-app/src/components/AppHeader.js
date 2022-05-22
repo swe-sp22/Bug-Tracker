@@ -23,7 +23,7 @@ const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
 
-  const logout =()=>{
+  const logout = () => {
     localStorage.clear()
     location.reload();
   }
@@ -44,9 +44,6 @@ const AppHeader = () => {
             <CNavLink to="/dashboard" component={NavLink}>
               Dashboard
             </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Users</CNavLink>
           </CNavItem>
           <CNavItem>
             <CButton size='sm' color='dark' onClick={logout}>Logout</CButton>

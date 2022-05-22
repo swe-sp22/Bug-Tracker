@@ -45,7 +45,7 @@ const AssignMemberModal = (props) => {
   
       fetch(url+'bugs/'+props.bug_id+'/assign/'+member_id,requestOptions)
       .then(response => response.text())
-      .then(result => {console.log(result);location.reload();})
+      .then(result => {swal("Good job!", "Bug has been assigned !", "success");console.log(result);location.reload();})
       .catch(error => console.log('error', error));
       setVisible(!visible);
   }
