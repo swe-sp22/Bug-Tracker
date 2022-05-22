@@ -56,7 +56,7 @@ const Projects = () => {
     });
 
     myHeaders.append("Authorization", 
-    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmMwYjc0NWFmYWRlMjRkMTgzNGRjYjQ2YTkzOTAzODc0ODRiZjJiNTY1YWRkNGU4ZDRiZDQzY2FkMzExY2MzYzUzODA0YzFkZjE1NDYwMzMiLCJpYXQiOjE2NTI3OTk3MDUsIm5iZiI6MTY1Mjc5OTcwNSwiZXhwIjoxNjg0MzM1NzA1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.WGDcXMJ-uUy-1vs7pXQGkkoNw97tX_XTMgWxxH-qSnMvYcw1Gb4ywKvZxnfWwvEvc-wYZt7fXXB9kXGiNyHDAhipc33H0zHD1OF7Jl8dkpqoFCJW9VdQeaECysbVL8RO3qMqCWUQdm_-gIgj9pucTDhsX7LctqfwfiJP3P7i2zVrhPoApRFPO9ywg10LepGvLhka1td6MCID_tRtPBQxfJ6LIyO52Afno9UvTXQgp3mtPwNst42kfgkYyD3PFdetR0sEVruJH5X6EiabvTK2VLlRb6ZAOD6fcMjKnvF00alrNyhE6jnOCHoVLUO76vUrS80Cnu4JihwrkXZfzh0G7aBFCmszUrEJLdVl65Ktlf3QcPTqmtxCKqEHlD-00Z2ReR32IGIVNGoidYENu4mNL5DOK5A338OnpqOSZh0AEQV05z11zqHYkDh2T2Y7rSCvOPJ_M8L7_r5rfWsN4MP6MUfuWn1_HleoKbEMYHOW521jqDLHJgMZiMmtNKSTF0uUDjsEc6JcZO0xQjgoG9GtyDjX5HZk7H307xQro_Z5b-3YLU-vPWBrwIDgxkLHClvezumboIURTT0CoMM7LsYr1h_AyiiFE0ez71ym7A9HnSfQ0i3VIiPCGURMMUCJ_wMSbg4BVSUFXRMToQ4aR19PLbKaK7ANUQfSdUo5VDcp0c0");
+    `Bearer ${token}`)
 
     myHeaders.append("Content-Type", "application/json");
 
@@ -69,7 +69,8 @@ const Projects = () => {
 
     fetch('http://127.0.0.1:8000/api/bugs/status/'+bug_id, requestOptions)
     .then(response => response.json())
-    .then(result => alert("Bug status changed.."))
+    .then(result => swal("Good job!", "Bug status changed!", "success")
+  )
     .catch(error => alert('error', error));
 
     };
