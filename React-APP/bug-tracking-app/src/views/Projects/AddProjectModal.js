@@ -26,11 +26,16 @@ const AddProjectModal = (props) => {
     };
 
     fetch(url,requestOptions)
-    .then(response => response.text())
-    .then(result => {swal("Good job!", "Bug Project created Succesfully", "success");console.log(result);location.reload();})
+    .then(response => {
+      response.text();
+      if(response.status == 201) {
+      swal("Good job!", "Bug Project created Succesfully", "success").then(function() {location.reload();setVisible(!visible);});
+      }
+      else {
+        swal(`Error ${response.status}`, "Project can't be created", "error");
+      }
+    })
     .catch(error => console.log('error', error));
-    setVisible(!visible);
-    
   };
 
   return (

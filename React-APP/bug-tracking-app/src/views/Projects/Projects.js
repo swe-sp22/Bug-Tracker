@@ -45,9 +45,10 @@ const Projects = () => {
   const changeStatus =(e)=>{
     var status = (e.target.value);
     console.log(status);
-    const bug_id = status.charAt(status.length - 1);
+    const status_arr = status.split(" ");
+    const bug_id = status_arr[1];
     console.log(bug_id);
-    status = status.substring(0, status.length - 1);
+    status = status_arr[0];
     var myHeaders = new Headers();
     const token = localStorage.getItem('token');
   
@@ -68,11 +69,16 @@ const Projects = () => {
     };
 
     fetch('http://127.0.0.1:8000/api/bugs/status/'+bug_id, requestOptions)
-    .then(response => response.json())
-    .then(result => swal("Good job!", "Bug status changed!", "success")
-  )
+    .then(response => {
+      response.json();
+      if (response.status != 200) {
+        swal(`Error ${response.status}`, "Bug state can't be changed", "error");
+      }
+      else {
+        swal("Good job!", "Bug created successfully!", "success").then(function() {location.reload();})
+      }
+    })
     .catch(error => alert('error', error));
-
     };
 
   return (
@@ -126,9 +132,9 @@ const Projects = () => {
                       </CTableDataCell>
                       <select  className="form-select" aria-label="Default select example" onChange={changeStatus} >
                             <option  selected>{bug.status}</option>
-                            <option value={`ASSIGNED${bug.id}`}>ASSIGNED</option>
-                            <option  value={`OPEN${bug.id}`}>OPEN</option>
-                            <option  value={`CLOSED${bug.id}`}>CLOSED</option>
+                            <option value={`ASSIGNED ${bug.id}`}>ASSIGNED</option>
+                            <option  value={`OPEN ${bug.id}`}>OPEN</option>
+                            <option  value={`CLOSED ${bug.id}`}>CLOSED</option>
                       </select>
                     </CTableRow>
                       ))}
