@@ -11,6 +11,9 @@ import AssigneeModal from './AssigneeModal';
 import ReportBugModal from './ReportBugModal';
 import AddProjectModal from "./AddProjectModal";
 import AssignMemberModal from './AssignMemberModal'
+import DeleteProjectModal from './DeleteProjectModal';
+import UpdateProjectModal from './UpdateProjectModal'
+
 // sidebar nav config
 const Projects = () => {
   const [value,setValue]=useState('');
@@ -91,6 +94,8 @@ const Projects = () => {
           <CTableHeaderCell scope="col">Title</CTableHeaderCell>
           <CTableHeaderCell scope="col">Description</CTableHeaderCell>
           <CTableHeaderCell scope="col">Bug Report</CTableHeaderCell>
+          <CTableHeaderCell scope="col">Delete Project</CTableHeaderCell>
+          <CTableHeaderCell scope="col">Update Project</CTableHeaderCell>
         </CTableRow>
       </CTableHead>
 
@@ -102,6 +107,8 @@ const Projects = () => {
               <CTableDataCell>{project.title}</CTableDataCell>
               <CTableDataCell>{project.description}</CTableDataCell>
               <CTableDataCell><ReportBugModal color='warning' project_id={project.id}></ReportBugModal></CTableDataCell>
+              <CTableDataCell><DeleteProjectModal color='danger' project_id={project.id} title='Delete'></DeleteProjectModal></CTableDataCell>
+              <CTableDataCell><UpdateProjectModal project_title={project.title} project_description={project.description} color='primary' project_id={project.id} title='Update'></UpdateProjectModal></CTableDataCell>
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell colSpan="4">
@@ -122,6 +129,7 @@ const Projects = () => {
                       <CTableHeaderCell scope="row">
                         <Modal bug_id={bug.id} title={bug.title} description={bug.description} bug_photo={bug.photo} color="danger"></Modal>
                       </CTableHeaderCell>
+                      
                       <CTableDataCell> 
                       {  
                       bug.assignee_id ? (

@@ -1,52 +1,46 @@
 import React, { useState } from 'react'
 import { CModalFooter, CModalHeader, CModalTitle, CButton, CModal, CModalBody, CForm,CFormLabel, CFormInput,CFormTextarea } from '@coreui/react'
-const ReportBugModal = (props) => {
+const UpdateProjectModal = (props) => {
   const [visible, setVisible] = useState(false);
-  const [data, setData] = useState('');
-  const [title,setTitle] = useState("Bug title");
-  const [description, setDescription] = useState("description");
+  const [title,setTitle] = useState(props.project_title);
+  const [description, setDescription] = useState(props.project_description);
 
-  const url = 'http://127.0.0.1:8000/api/bugs';
+  const url = 'http://127.0.0.1:8000/api/projects/';
   const token = localStorage.getItem('token');
   var row = JSON.stringify({
     "title": title ,
-    "description": description,
-    "project_id": props.project_id,
+    "description": description
   });
 
-  const createBug = ()=>{
+  const createProject = ()=>{
     var myHeaders = new Headers();
     myHeaders.append("Authorization", 
     `Bearer ${token}`)
     myHeaders.append("Content-Type", "application/json");
 
     var requestOptions = {
-      method: 'POST',
+      method: 'PUT',
       headers: myHeaders,
       body: row,
       redirect: 'follow'
     };
 
-    fetch(url,requestOptions)
+    fetch(url+props.project_id,requestOptions)
     .then(response => {
-      response.text();
-      if (response.status != 201) {
-        swal(`Error ${response.status}`, "Bug can't be reported", "error");
+      console.log(response.text());
+      if(response.status == 200) {
+      swal("Good job!", "Bug Project updated Succesfully", "success").then(function() {location.reload();setVisible(!visible);});
       }
       else {
-        swal("Good job!", "Bug created successfully!", "success").then(function() {location.reload();});
+        swal(`Error ${response.status}`, "Project can't be updated", "error");
       }
     })
     .catch(error => console.log('error', error));
-    setTimeout(() => {
-      setVisible(!visible);
-    }, 2000);
-    
   };
 
   return (
     <>
-      <CButton size='sm' color={props.color} onClick={() => setVisible(!visible)}>Report bug</CButton>
+      <CButton size='sm' color={props.color} onClick={() => setVisible(!visible)}>{props.title}</CButton>
       <CModal scrollable visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Report bug for project {props.project_id}</CModalTitle>
@@ -55,15 +49,11 @@ const ReportBugModal = (props) => {
         <CForm>
             <div className="mb-3">
                 <CFormLabel htmlFor="exampleFormControlInput1">Title</CFormLabel>
-                <CFormInput   value={title} onChange={(e) => {setTitle(e.target.value);}} type="text" id="exampleFormControlInput1" placeholder="Bug title"/>
+                <CFormInput   value={title} onChange={(e) => {setTitle(e.target.value);}} type="text" id="exampleFormControlInput1" placeholder="Project title" required />
             </div>
             <div className="mb-3">
                 <CFormLabel htmlFor="exampleFormControlTextarea1">Description</CFormLabel>
-                <CFormTextarea value={description} onChange={(e) => {setDescription(e.target.value);}}  id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
-            </div>
-            <div className="mb-3">
-                <CFormLabel htmlFor="formFile">Upload screenshot</CFormLabel>
-                <CFormInput type="file" id="formFile"/>
+                <CFormTextarea value={description} onChange={(e) => {setDescription(e.target.value);}}  id="exampleFormControlTextarea1" rows="3" required></CFormTextarea>
             </div>
         </CForm>
         </CModalBody>
@@ -71,10 +61,10 @@ const ReportBugModal = (props) => {
           <CButton color="secondary" onClick={() => setVisible(false)}>
             Close
           </CButton>
-          <CButton color="primary" onClick={createBug}>Save changes</CButton>
+          <CButton color="primary" onClick={createProject}>Save changes</CButton>
         </CModalFooter>
       </CModal>
     </>
   )
 }
-export default ReportBugModal
+export default UpdateProjectModal
