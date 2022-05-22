@@ -139,14 +139,19 @@ class BugTest extends TestCase
         \Artisan::call('passport:install');
         
         factory('App\Role')->create();
+        factory('App\Role')->create();
+        factory('App\Role')->create();
+
         $user = factory('App\User')->create();
         $user->role_id = 3;
+        $user->save();
+
         $token =  $user->createToken('authToken')->accessToken;
         $bug = factory('App\Bug')->create();
         $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
         ])->putJson("api/bugs/{$bug->id}", ['title'=>'updated title', 'description'=>'uodated desc', 'status'=>'OPEN'])
-            ->assertStatus(403); // This should pass but doesn't.
+            ->assertStatus(403);
     }
 
     /** @test */
